@@ -22,5 +22,5 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ["name", "rating","email","comment"]
+    list_display = ["full_name", "rating","email","description"]
     

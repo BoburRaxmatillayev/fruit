@@ -46,27 +46,27 @@ class Contact(models.Model):
     def __str__(self):
         return self.first_name
 
-# class Comment(models.Model):
-#     full_name = models.CharField(max_length=50)
-#     email = models.EmailField()
-#     description = models.TextField()
-#     rating = models.IntegerField()
-#     reated_at = models.DateTimeField(auto_now_add=True)
+class Comment(models.Model):
+    full_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    description = models.TextField()
+    rating = models.IntegerField()
+    # reated_at = models.DateTimeField(auto_now_add=True)
 
-#     product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Comment by {self.full_name}"
+
+# class Comment(models.Model):
+#     name = models.CharField(max_length=255)
+#     email = models.EmailField()
+#     comment = models.TextField()
+#     rating = models.IntegerField()
+#     created_at = models.DateTimeField(auto_now_add=True)
 
 #     def __str__(self):
 #         return f"Comment by {self.name}"
-
-class Comment(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    comment = models.TextField()
-    rating = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Comment by {self.name}"
 
 
 class Cart(models.Model):
