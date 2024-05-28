@@ -19,8 +19,9 @@ class Category(models.Model):
     
 class Product(models.Model):
     title = models.CharField(max_length=200)
+    slug = models.SlugField() #new
     price = models.FloatField()
-    rating = models.IntegerField()
+    rating = models.FloatField(default=4) #change
     description = models.TextField()
     weight = models.FloatField()
     country_of_origin = models.CharField(max_length=200)
@@ -45,15 +46,27 @@ class Contact(models.Model):
     def __str__(self):
         return self.first_name
 
-class Comment(models.Model):
-    full_name = models.CharField(max_length=50)
-    description = models.TextField()
-    rating = models.IntegerField()
+# class Comment(models.Model):
+#     full_name = models.CharField(max_length=50)
+#     email = models.EmailField()
+#     description = models.TextField()
+#     rating = models.IntegerField()
+#     reated_at = models.DateTimeField(auto_now_add=True)
 
-    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+#     product = models.ForeignKey(Product,on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         return f"Comment by {self.name}"
+
+class Comment(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    comment = models.TextField()
+    rating = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.full_name
+        return f"Comment by {self.name}"
 
 
 class Cart(models.Model):
